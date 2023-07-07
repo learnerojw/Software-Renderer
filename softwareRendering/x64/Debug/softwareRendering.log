@@ -1,0 +1,20 @@
+﻿  main.cpp
+C:\VS\Render\softwareRendering\src\main.cpp(34,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(58,15): warning C4101: “ooooo”: 未引用的局部变量
+C:\VS\Render\softwareRendering\src\geometry.h(18,75): warning C4244: “参数”: 从“float”转换到“t”，可能丢失数据
+          with
+          [
+              t=int
+          ]
+C:\VS\Render\softwareRendering\src\geometry.h(18,1): message : 在编译 类 模板 成员函数“Vec2<int> Vec2<int>::operator *(float) const”时
+C:\VS\Render\softwareRendering\src\main.cpp(64,22): message : 查看对正在编译的函数 模板 实例化“Vec2<int> Vec2<int>::operator *(float) const”的引用
+C:\VS\Render\softwareRendering\src\main.cpp(15,1): message : 查看对正在编译的 类 模板 实例化“Vec2<int>”的引用
+C:\VS\Render\softwareRendering\src\geometry.h(18,70): warning C4244: “参数”: 从“float”转换到“t”，可能丢失数据
+          with
+          [
+              t=int
+          ]
+  model.cpp
+  tgaimage.cpp
+  正在生成代码...
+  softwareRendering.vcxproj -> C:\VS\Render\softwareRendering\x64\Debug\softwareRendering.exe
