@@ -55,7 +55,7 @@ void triangle(Vec2i t0, Vec2i t1, Vec2i t2, TGAImage& image, TGAColor color)
     int t1_t2_height = t2.y - t1.y + 1;
     for (int y = t0.y; y <= t2.y; y++)
     {
-        float jjjj;
+        float www;
         float alpha = (float)(y - t0.y) / total_height;
         float beta = (float)(y - t0.y) / t0_t1_height;
         float gama = (float)(y - t1.y) / t1_t2_height;
