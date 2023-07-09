@@ -1,6 +1,36 @@
 ﻿  main.cpp
 C:\VS\Render\softwareRendering\src\main.cpp(34,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
-C:\VS\Render\softwareRendering\src\main.cpp(58,15): warning C4101: “ooooo”: 未引用的局部变量
+C:\VS\Render\softwareRendering\src\main.cpp(58,15): warning C4101: “www”: 未引用的局部变量
+C:\VS\Render\softwareRendering\src\main.cpp(156,113): warning C4244: “参数”: 从“t”转换到“t”，可能丢失数据
+          with
+          [
+              t=float
+          ]
+          and
+          [
+              t=int
+          ]
+C:\VS\Render\softwareRendering\src\main.cpp(156,96): warning C4244: “参数”: 从“t”转换到“t”，可能丢失数据
+          with
+          [
+              t=float
+          ]
+          and
+          [
+              t=int
+          ]
+C:\VS\Render\softwareRendering\src\main.cpp(156,61): warning C4244: “参数”: 从“t”转换到“t”，可能丢失数据
+          with
+          [
+              t=float
+          ]
+          and
+          [
+              t=int
+          ]
+C:\VS\Render\softwareRendering\src\main.cpp(164,128): warning C4244: “参数”: 从“float”转换到“unsigned char”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(164,111): warning C4244: “参数”: 从“float”转换到“unsigned char”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(164,94): warning C4244: “参数”: 从“float”转换到“unsigned char”，可能丢失数据
 C:\VS\Render\softwareRendering\src\geometry.h(18,75): warning C4244: “参数”: 从“float”转换到“t”，可能丢失数据
           with
           [
@@ -14,7 +44,4 @@ C:\VS\Render\softwareRendering\src\geometry.h(18,70): warning C4244: “参数�
           [
               t=int
           ]
-  model.cpp
-  tgaimage.cpp
-  正在生成代码...
   softwareRendering.vcxproj -> C:\VS\Render\softwareRendering\x64\Debug\softwareRendering.exe
