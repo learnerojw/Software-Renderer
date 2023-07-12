@@ -206,7 +206,7 @@ Matrix v2m(Vec3f v) {
     return m;
 }
 
-//视口变换矩阵，这里跟入门精要里面的写法有区别，目前还不知道原因
+//视口变换矩阵，这里跟入门精要里面的写法有区别
 Matrix viewport(int x, int y, int w, int h) {
     Matrix m = Matrix::identity(4);
     m[0][3] = x + w / 2.f;
