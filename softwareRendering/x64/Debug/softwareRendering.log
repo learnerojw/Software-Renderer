@@ -1,7 +1,67 @@
-﻿  main.cpp
-C:\VS\Render\softwareRendering\src\main.cpp(34,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
-C:\VS\Render\softwareRendering\src\main.cpp(58,15): warning C4101: “www”: 未引用的局部变量
-C:\VS\Render\softwareRendering\src\main.cpp(156,113): warning C4244: “参数”: 从“t”转换到“t”，可能丢失数据
+﻿  geometry.cpp
+C:\VS\Render\tinyrenderer\tinyrenderer-04透视和视口\geometry.cpp(8,66): warning C4244: “初始化”: 从“const t”转换到“t”，可能丢失数据
+          with
+          [
+              t=int
+          ]
+          and
+          [
+              t=float
+          ]
+C:\VS\Render\tinyrenderer\tinyrenderer-04透视和视口\geometry.cpp(8,74): warning C4244: “初始化”: 从“const t”转换到“t”，可能丢失数据
+          with
+          [
+              t=int
+          ]
+          and
+          [
+              t=float
+          ]
+C:\VS\Render\tinyrenderer\tinyrenderer-04透视和视口\geometry.cpp(8,82): warning C4244: “初始化”: 从“const t”转换到“t”，可能丢失数据
+          with
+          [
+              t=int
+          ]
+          and
+          [
+              t=float
+          ]
+  main.cpp
+C:\VS\Render\softwareRendering\src\main.cpp(42,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(66,15): warning C4101: “www”: 未引用的局部变量
+C:\VS\Render\softwareRendering\src\main.cpp(146,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(147,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(149,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(150,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(156,24): warning C4244: “参数”: 从“int”转换到“t”，可能丢失数据
+          with
+          [
+              t=float
+          ]
+C:\VS\Render\softwareRendering\src\main.cpp(156,21): warning C4244: “参数”: 从“int”转换到“t”，可能丢失数据
+          with
+          [
+              t=float
+          ]
+C:\VS\Render\softwareRendering\src\main.cpp(175,96): warning C4244: “参数”: 从“float”转换到“unsigned char”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(175,75): warning C4244: “参数”: 从“float”转换到“unsigned char”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(175,54): warning C4244: “参数”: 从“float”转换到“unsigned char”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(236,51): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+C:\VS\Render\softwareRendering\src\geometry.h(20,74): warning C4244: “参数”: 从“float”转换到“t”，可能丢失数据
+          with
+          [
+              t=int
+          ]
+C:\VS\Render\softwareRendering\src\geometry.h(20,1): message : 在编译 类 模板 成员函数“Vec2<int> Vec2<int>::operator *(float) const”时
+C:\VS\Render\softwareRendering\src\main.cpp(72,22): message : 查看对正在编译的函数 模板 实例化“Vec2<int> Vec2<int>::operator *(float) const”的引用
+C:\VS\Render\softwareRendering\src\main.cpp(23,1): message : 查看对正在编译的 类 模板 实例化“Vec2<int>”的引用
+C:\VS\Render\softwareRendering\src\geometry.h(20,67): warning C4244: “参数”: 从“float”转换到“t”，可能丢失数据
+          with
+          [
+              t=int
+          ]
+  model.cpp
+C:\VS\Render\softwareRendering\src\model.cpp(87,67): warning C4244: “参数”: 从“t”转换到“t”，可能丢失数据
           with
           [
               t=float
@@ -10,7 +70,7 @@ C:\VS\Render\softwareRendering\src\main.cpp(156,113): warning C4244: “参数�
           [
               t=int
           ]
-C:\VS\Render\softwareRendering\src\main.cpp(156,96): warning C4244: “参数”: 从“t”转换到“t”，可能丢失数据
+C:\VS\Render\softwareRendering\src\model.cpp(87,29): warning C4244: “参数”: 从“t”转换到“t”，可能丢失数据
           with
           [
               t=float
@@ -19,29 +79,7 @@ C:\VS\Render\softwareRendering\src\main.cpp(156,96): warning C4244: “参数”
           [
               t=int
           ]
-C:\VS\Render\softwareRendering\src\main.cpp(156,61): warning C4244: “参数”: 从“t”转换到“t”，可能丢失数据
-          with
-          [
-              t=float
-          ]
-          and
-          [
-              t=int
-          ]
-C:\VS\Render\softwareRendering\src\main.cpp(164,128): warning C4244: “参数”: 从“float”转换到“unsigned char”，可能丢失数据
-C:\VS\Render\softwareRendering\src\main.cpp(164,111): warning C4244: “参数”: 从“float”转换到“unsigned char”，可能丢失数据
-C:\VS\Render\softwareRendering\src\main.cpp(164,94): warning C4244: “参数”: 从“float”转换到“unsigned char”，可能丢失数据
-C:\VS\Render\softwareRendering\src\geometry.h(18,75): warning C4244: “参数”: 从“float”转换到“t”，可能丢失数据
-          with
-          [
-              t=int
-          ]
-C:\VS\Render\softwareRendering\src\geometry.h(18,1): message : 在编译 类 模板 成员函数“Vec2<int> Vec2<int>::operator *(float) const”时
-C:\VS\Render\softwareRendering\src\main.cpp(64,22): message : 查看对正在编译的函数 模板 实例化“Vec2<int> Vec2<int>::operator *(float) const”的引用
-C:\VS\Render\softwareRendering\src\main.cpp(15,1): message : 查看对正在编译的 类 模板 实例化“Vec2<int>”的引用
-C:\VS\Render\softwareRendering\src\geometry.h(18,70): warning C4244: “参数”: 从“float”转换到“t”，可能丢失数据
-          with
-          [
-              t=int
-          ]
+  tgaimage.cpp
+  正在生成代码...
+  LINK : 没有找到 C:\VS\Render\softwareRendering\x64\Debug\softwareRendering.exe 或上一个增量链接没有生成它；正在执行完全链接
   softwareRendering.vcxproj -> C:\VS\Render\softwareRendering\x64\Debug\softwareRendering.exe

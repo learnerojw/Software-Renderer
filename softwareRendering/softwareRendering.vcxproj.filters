@@ -35,5 +35,8 @@
     <ClCompile Include="..\src\tgaimage.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\tinyrenderer\tinyrenderer-04透视和视口\geometry.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -132,6 +132,7 @@
     <ClInclude Include="..\src\tgaimage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\tinyrenderer\tinyrenderer-04透视和视口\geometry.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\model.cpp" />
     <ClCompile Include="..\src\tgaimage.cpp" />
