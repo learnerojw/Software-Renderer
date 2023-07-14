@@ -15,17 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\geometry.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\model.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\tgaimage.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -35,8 +24,25 @@
     <ClCompile Include="..\src\tgaimage.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\tinyrenderer\tinyrenderer-04透视和视口\geometry.cpp">
+    <ClCompile Include="..\src\our_gl.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\geometry.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\geometry.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tgaimage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\our_gl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

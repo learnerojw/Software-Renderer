@@ -127,15 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\geometry.h" />
-    <ClInclude Include="..\src\model.h" />
-    <ClInclude Include="..\src\tgaimage.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\tinyrenderer\tinyrenderer-04透视和视口\geometry.cpp" />
+    <ClCompile Include="..\src\geometry.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\model.cpp" />
+    <ClCompile Include="..\src\our_gl.cpp" />
     <ClCompile Include="..\src\tgaimage.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\geometry.h" />
+    <ClInclude Include="..\src\model.h" />
+    <ClInclude Include="..\src\our_gl.h" />
+    <ClInclude Include="..\src\tgaimage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
