@@ -1,166 +1,54 @@
-﻿  geometry.cpp
-C:\VS\Render\softwareRendering\src\geometry.cpp(4,69): warning C4244: “初始化”: 从“const T”转换到“T”，可能丢失数据
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\VS\Render\softwareRendering\src\geometry.cpp(4,77): warning C4244: “初始化”: 从“const T”转换到“T”，可能丢失数据
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\VS\Render\softwareRendering\src\geometry.cpp(4,85): warning C4244: “初始化”: 从“const T”转换到“T”，可能丢失数据
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\VS\Render\softwareRendering\src\geometry.cpp(6,69): warning C4244: “初始化”: 从“const T”转换到“T”，可能丢失数据
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\VS\Render\softwareRendering\src\geometry.cpp(6,77): warning C4244: “初始化”: 从“const T”转换到“T”，可能丢失数据
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-  main.cpp
+﻿  main.cpp
 C:\VS\Render\softwareRendering\src\tgaimage.h(60,59): warning C4244: “=”: 从“float”转换到“unsigned char”，可能丢失数据
-C:\VS\Render\softwareRendering\src\main.cpp(43,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
-C:\VS\Render\softwareRendering\src\main.cpp(67,15): warning C4101: “www”: 未引用的局部变量
-C:\VS\Render\softwareRendering\src\main.cpp(147,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
-C:\VS\Render\softwareRendering\src\main.cpp(149,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
-C:\VS\Render\softwareRendering\src\main.cpp(152,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
-C:\VS\Render\softwareRendering\src\main.cpp(154,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
-C:\VS\Render\softwareRendering\src\main.cpp(161,24): warning C4244: “参数”: 从“int”转换到“T”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(44,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(68,15): warning C4101: “www”: 未引用的局部变量
+C:\VS\Render\softwareRendering\src\main.cpp(155,61): warning C4244: “参数”: 从“T”转换到“int”，可能丢失数据
           with
           [
               T=float
           ]
-C:\VS\Render\softwareRendering\src\main.cpp(161,21): warning C4244: “参数”: 从“int”转换到“T”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(155,49): warning C4244: “参数”: 从“T”转换到“int”，可能丢失数据
           with
           [
               T=float
           ]
-C:\VS\Render\softwareRendering\src\main.cpp(183,52): error C2039: "r": 不是 "TGAColor" 的成员
-C:\VS\Render\softwareRendering\src\tgaimage.h(25,8): message : 参见“TGAColor”的声明
-C:\VS\Render\softwareRendering\src\main.cpp(183,73): error C2039: "g": 不是 "TGAColor" 的成员
-C:\VS\Render\softwareRendering\src\tgaimage.h(25,8): message : 参见“TGAColor”的声明
-C:\VS\Render\softwareRendering\src\main.cpp(183,94): error C2039: "b": 不是 "TGAColor" 的成员
-C:\VS\Render\softwareRendering\src\tgaimage.h(25,8): message : 参见“TGAColor”的声明
-C:\VS\Render\softwareRendering\src\main.cpp(199,15): error C2661: “mat<4,4,float>::mat”: 没有重载函数接受 2 个参数
-C:\VS\Render\softwareRendering\src\main.cpp(199,15): message : 尝试匹配参数列表“(int, int)”时
-C:\VS\Render\softwareRendering\src\main.cpp(209,13): error C2661: “mat<4,4,float>::mat”: 没有重载函数接受 2 个参数
-C:\VS\Render\softwareRendering\src\main.cpp(209,13): message : 尝试匹配参数列表“(int, int)”时
-C:\VS\Render\softwareRendering\src\main.cpp(219,24): error C2660: “mat<4,4,float>::identity”: 函数不接受 1 个参数
-C:\VS\Render\softwareRendering\src\geometry.h(141,37): message : 参见“mat<4,4,float>::identity”的声明
-C:\VS\Render\softwareRendering\src\main.cpp(219,24): message : 尝试匹配参数列表“(int)”时
-C:\VS\Render\softwareRendering\src\main.cpp(236,26): error C2660: “mat<4,4,float>::identity”: 函数不接受 1 个参数
-C:\VS\Render\softwareRendering\src\geometry.h(141,37): message : 参见“mat<4,4,float>::identity”的声明
-C:\VS\Render\softwareRendering\src\main.cpp(236,26): message : 尝试匹配参数列表“(int)”时
-C:\VS\Render\softwareRendering\src\main.cpp(264,51): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-C:\VS\Render\softwareRendering\src\main.cpp(268,37): error C2660: “mat<4,4,float>::identity”: 函数不接受 1 个参数
-C:\VS\Render\softwareRendering\src\geometry.h(141,37): message : 参见“mat<4,4,float>::identity”的声明
-C:\VS\Render\softwareRendering\src\main.cpp(268,37): message : 尝试匹配参数列表“(int)”时
-C:\VS\Render\softwareRendering\src\main.cpp(286,37): error C2039: "norm": 不是 "Model" 的成员
-C:\VS\Render\softwareRendering\src\model.h(8,7): message : 参见“Model”的声明
-C:\VS\Render\softwareRendering\src\main.cpp(289,59): error C2676: 二进制“^”:“vec<3,float>”不定义该运算符或到预定义运算符可接收的类型的转换
-  model.cpp
-C:\VS\Render\softwareRendering\src\tgaimage.h(60,59): warning C4244: “=”: 从“float”转换到“unsigned char”，可能丢失数据
-C:\VS\Render\softwareRendering\src\model.cpp(85,55): warning C4244: “参数”: 从“T”转换到“T”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(160,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(162,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(165,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(167,15): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(174,24): warning C4244: “参数”: 从“int”转换到“T”，可能丢失数据
           with
           [
               T=float
+          ]
+C:\VS\Render\softwareRendering\src\main.cpp(174,21): warning C4244: “参数”: 从“int”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+C:\VS\Render\softwareRendering\src\main.cpp(283,34): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(312,30): warning C4244: “参数”: 从“int”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+C:\VS\Render\softwareRendering\src\main.cpp(312,28): warning C4244: “参数”: 从“int”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
+C:\VS\Render\softwareRendering\src\geometry.h(64,41): warning C4244: “*=”: 从“const U”转换到“T”，可能丢失数据
+          with
+          [
+              U=float
           ]
           and
           [
               T=int
           ]
-C:\VS\Render\softwareRendering\src\model.cpp(85,21): warning C4244: “参数”: 从“T”转换到“T”，可能丢失数据
+C:\VS\Render\softwareRendering\src\main.cpp(74,41): message : 查看对正在编译的函数 模板 实例化“vec<2,int> operator *<2,int,float>(vec<2,int>,const U &)”的引用
           with
           [
-              T=float
+              U=float
           ]
-          and
-          [
-              T=int
-          ]
-C:\VS\Render\softwareRendering\src\model.cpp(90,54): warning C4244: “参数”: 从“T”转换到“T”，可能丢失数据
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-C:\VS\Render\softwareRendering\src\model.cpp(90,21): warning C4244: “参数”: 从“T”转换到“T”，可能丢失数据
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-C:\VS\Render\softwareRendering\src\model.cpp(103,56): warning C4244: “参数”: 从“T”转换到“T”，可能丢失数据
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-C:\VS\Render\softwareRendering\src\model.cpp(103,21): warning C4244: “参数”: 从“T”转换到“T”，可能丢失数据
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-  our_gl.cpp
-C:\VS\Render\softwareRendering\src\tgaimage.h(60,59): warning C4244: “=”: 从“float”转换到“unsigned char”，可能丢失数据
-C:\VS\Render\softwareRendering\src\our_gl.cpp(64,21): warning C4244: “=”: 从“T”转换到“T”，可能丢失数据
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-C:\VS\Render\softwareRendering\src\our_gl.cpp(65,25): warning C4244: “=”: 从“T”转换到“T”，可能丢失数据
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-  tgaimage.cpp
-C:\VS\Render\softwareRendering\src\tgaimage.h(60,59): warning C4244: “=”: 从“float”转换到“unsigned char”，可能丢失数据
-  正在生成代码...
+  softwareRendering.vcxproj -> C:\VS\Render\softwareRendering\x64\Debug\softwareRendering.exe

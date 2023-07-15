@@ -24,10 +24,10 @@
     <ClCompile Include="..\src\tgaimage.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\our_gl.cpp">
+    <ClCompile Include="..\src\geometry.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\geometry.cpp">
+    <ClCompile Include="..\src\our_gl.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

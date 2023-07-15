@@ -60,6 +60,16 @@ struct TGAColor {
         for (int i = 0; i < 4; i++) res.bgra[i] = bgra[i] * intensity;
         return res;
     }
+
+    TGAColor operator +(TGAColor& color) const {
+        TGAColor res = *this;
+        for (int i = 0; i < 3; i++)
+        {
+            res.bgra[i] += color.bgra[i];
+            res.bgra[i] = unsigned char(std::min(255.f, float(res.bgra[i])));
+        }
+        return res;
+    }
 };
 
 

@@ -1,8 +1,10 @@
 #include <vector>
-#include <cmath>
+#include <iostream>
+
 #include "tgaimage.h"
 #include "model.h"
 #include "geometry.h"
+#include "our_gl.h"
 //#include<algorithm>
 const TGAColor white = TGAColor(255, 255, 255, 255);
 const TGAColor red = TGAColor(255, 0, 0, 255);
@@ -10,11 +12,10 @@ const TGAColor green = TGAColor(0, 255, 0, 255);
 Model* model = NULL;
 const int width = 800;
 const int height = 800;
-Vec3f light_dir(0, 0, -1);
-Vec3f camera(0, 0, 3);
-const int depth = 255;
-Vec3f eye(1,1,3);
-Vec3f center(0,0,0);
+Vec3f light_dir(1, 1, 1);
+Vec3f       eye(1, 1, 3);
+Vec3f    center(0, 0, 0);
+Vec3f        up(0, 1, 0);
 //叉乘
 Vec3f Cross(Vec3f v1, Vec3f v2)
 {
@@ -141,17 +142,29 @@ Vec3f barycentric(Vec3f t0, Vec3f t1, Vec3f t2, Vec3f& p)
 
 
 //主流方法绘制三角形
-void triangle2(Vec3f t0, Vec3f t1, Vec3f t2, Vec2i uv0, Vec2i uv1, Vec2i uv2,float intensity,float* zbuffer, TGAImage& image)
+void triangle2(Vec2f* index, IShader& shader, TGAImage& zbuffer, TGAImage& image)
 {
+    Vec3f vertex[3];
+    Vec4f screen_pos_ori[3];
+    Vec3f screen_pos[3];
+    TGAColor color;
+    for (int i = 0; i < 3; i++)
+    {
+        /*std::vector<int> face = model->face(index[i][0]);
+        vertex[i] = model->vert(face[index[i][1]]);*/
+        screen_pos_ori[i]=shader.vertex(index[i].x, index[i].y);
+        screen_pos[i] = Vec3f(screen_pos_ori[i][0] / screen_pos_ori[i][3], screen_pos_ori[i][1] / screen_pos_ori[i][3], screen_pos_ori[i][2] / screen_pos_ori[i][3]);
+    }
+    
     //缩小遍历范围
-    int x_min = floor(std::min(std::min(t0.x, t1.x), t2.x));
+    int x_min = floor(std::min(std::min(screen_pos[0][0], screen_pos[1][0]), screen_pos[2][0]));
     //x_min = std::max(0, x_min);
-    int x_max = ceil(std::max(std::max(t0.x, t1.x), t2.x));
+    int x_max = ceil(std::max(std::max(screen_pos[0][0], screen_pos[1][0]),screen_pos[2][0]));
     //x_max = std::min(width, x_min);
 
-    int y_min = floor(std::min(std::min(t0.y, t1.y), t2.y));
+    int y_min = floor(std::min(std::min(screen_pos[0][1], screen_pos[1][1]), screen_pos[2][1]));
     //y_min = std::max(0, y_min);
-    int y_max = ceil(std::max(std::max(t0.y, t1.y), t2.y));
+    int y_max = ceil(std::max(std::max(screen_pos[0][1], screen_pos[1][1]), screen_pos[2][1]));
     //y_max = std::min(height, y_max);
 
     for (int i = x_min; i <= x_max; i++)
@@ -160,27 +173,26 @@ void triangle2(Vec3f t0, Vec3f t1, Vec3f t2, Vec2i uv0, Vec2i uv1, Vec2i uv2,flo
         {
             Vec3f p(i, j, 0);
             //判断该屏幕像素坐标是否在三角形内
-            if (insideTriangle(t0, t1, t2, p))
+            if (insideTriangle(screen_pos[0], screen_pos[1], screen_pos[2], p))
             {
                 //计算重心坐标
-                Vec3f barycenter = barycentric(t0, t1, t2, p);
+                Vec3f barycenter = barycentric(screen_pos[0], screen_pos[1], screen_pos[2], p);
                 //通过重心坐标对z值进行插值，这里还需优化
-                float z = t0.z * barycenter.x + t1.z * barycenter.y + t2.z * barycenter.z;
+                float z = screen_pos[0].z * barycenter.x + screen_pos[1].z * barycenter.y + screen_pos[2].z * barycenter.z;
 
                 //通过重心坐标对uv坐标进行插值
-                Vec2i uv = uv0 * barycenter.x + uv1 * barycenter.y + uv2 * barycenter.z;
-
+                //Vec2i uv = uv0 * barycenter.x + uv1 * barycenter.y + uv2 * barycenter.z;
+                int frag_depth = std::max(0, std::min(255, int(z+.5)));
                 //Vec3f normal = normals[0] * barycenter.x + normals[1] * barycenter.y + normals[2] * barycenter.z;
 
                 //float intensity = normal.normalize() * light_dir;
                 //深度测试
-                if (z > zbuffer[j * width + i])
+                if (zbuffer.get(i, j)[0] < frag_depth)
                 {
                     //深度写入
-                    zbuffer[j * width + i] = z;
-                    //采样
-                    TGAColor color = model->diffuse(uv);
-                    image.set(i, j, TGAColor(color.r * intensity, color.g * intensity, color.b * intensity));
+                    zbuffer.set(i, j, TGAColor(frag_depth));
+                    shader.fragment(barycenter, color);
+                    image.set(i, j, color);
                 }
 
             }
@@ -195,58 +207,87 @@ Vec3f threePos(Matrix m)
 }
 
 //齐次坐标转换为普通坐标
-Matrix m2v(Matrix m) {
-    Matrix res(4, 1);
-    res[0][0] = m[0][0] / m[3][0];
-    res[1][0] = m[1][0] / m[3][0];
-    res[2][0] = m[2][0] / m[3][0];
-    res[3][0] = 1.0f;
-    return res;
-}
-
-//普通三维坐标转换成齐次坐标
-Matrix v2m(Vec3f v) {
-    Matrix m(4, 1);
-    m[0][0] = v.x;
-    m[1][0] = v.y;
-    m[2][0] = v.z;
-    m[3][0] = 1.f;
-    return m;
-}
+//Matrix m2v(Matrix m) {
+//    Matrix res(4, 1);
+//    res[0][0] = m[0][0] / m[3][0];
+//    res[1][0] = m[1][0] / m[3][0];
+//    res[2][0] = m[2][0] / m[3][0];
+//    res[3][0] = 1.0f;
+//    return res;
+//}
+//
+////普通三维坐标转换成齐次坐标
+//Matrix v2m(Vec3f v) {
+//    Matrix m(4, 1);
+//    m[0][0] = v.x;
+//    m[1][0] = v.y;
+//    m[2][0] = v.z;
+//    m[3][0] = 1.f;
+//    return m;
+//}
 
 //视口变换矩阵，这里跟入门精要里面的写法有区别
-Matrix viewport(int x, int y, int w, int h) {
-    Matrix m = Matrix::identity(4);
-    m[0][3] = x+w/2.f;
-    m[1][3] = y+h/2.0f;
-    m[2][3] = depth / 2.f;
-
-    m[0][0] = w / 2.f;
-    m[1][1] = h / 2.f;
-    m[2][2] = depth / 2.f;
-    return m;
-}
+//Matrix viewport(int x, int y, int w, int h) {
+//    Matrix m = Matrix::identity(4);
+//    m[0][3] = x+w/2.f;
+//    m[1][3] = y+h/2.0f;
+//    m[2][3] = depth / 2.f;
+//
+//    m[0][0] = w / 2.f;
+//    m[1][1] = h / 2.f;
+//    m[2][2] = depth / 2.f;
+//    return m;
+//}
 
 //模型到视角的转换，这里没有考虑世界空间
-Matrix ModelView(Vec3f eye,Vec3f center,Vec3f up)
-{
-    Vec3f z = eye.normalize();
-    Vec3f x = Cross(up, eye).normalize();
-    Vec3f y = Cross(z, x).normalize();
-    Matrix res = Matrix::identity(4);
+//Matrix ModelView(Vec3f eye,Vec3f center,Vec3f up)
+//{
+//    Vec3f z = eye.normalize();
+//    Vec3f x = Cross(up, eye).normalize();
+//    Vec3f y = Cross(z, x).normalize();
+//    Matrix res = Matrix::identity(4);
+//
+//    for (int i = 0; i < 3; i++)
+//    {
+//        res[0][i] = x[i];
+//        res[1][i] = y[i];
+//        res[2][i] = z[i];
+//        res[i][3] = -center[i];
+//    }
+//
+//    return res;
+//}
 
-    for (int i = 0; i < 3; i++)
-    {
-        res[0][i] = x[i];
-        res[1][i] = y[i];
-        res[2][i] = z[i];
-        res[i][3] = -center[i];
+struct GouraudShader : public IShader {
+    Vec2f uvs[3];
+    Vec3f normals[3];
+    Matrix MVP = Projection * ModelView;
+    Matrix MVP_invert = MVP.invert_transpose();
+    virtual Vec4f vertex(int iface, int nthvert) {
+        uvs[nthvert] = model->uv(iface, nthvert);
+        normals[nthvert] = model->normal(iface, nthvert);
+        Vec4f vertex = embed<4>(model->vert(iface, nthvert));
+        Vec4f screen_pos= Viewport * Projection * ModelView * vertex;
+        return screen_pos;
     }
 
-    return res;
-}
-
-
+    virtual bool fragment(Vec3f bar, TGAColor& color) {
+        //Vec3f normal = normals[0] * bar.x + normals[1] * bar.y + normals[2] * bar.z;
+        //normal.normalize();
+        Vec2f uv = uvs[0] * bar.x + uvs[1] * bar.y + uvs[2] * bar.z;
+        Vec3f normal= proj<3>(MVP_invert * embed<4>(model->normal(uv))).normalize();
+        Vec3f l = proj<3>(MVP * embed<4>(light_dir)).normalize();
+        Vec3f r = (normal * (normal * l * 2.f) - l).normalize();
+        Vec3f viewDir= proj<3>(MVP * embed<4>(eye)).normalize();
+        float diffuse_intensity = std::max(0.f, normal * l);
+        float specular_intensity = pow(std::max(viewDir * r, 0.0f), 128);
+        TGAColor diffuse = model->diffuse(uv) * diffuse_intensity;
+        TGAColor specular = model->diffuse(uv) * specular_intensity*0.6f;
+        
+        color = diffuse + specular;
+        return false;
+    }
+};
 
 int main(int argc, char** argv) {
     if (2 == argc) {
@@ -256,56 +297,27 @@ int main(int argc, char** argv) {
         model = new Model("obj/african_head.obj");
     }
 
+    lookat(eye, center, up);
+    viewport(width / 8, height / 8, width * 3 / 4, height * 3 / 4);
+    projection(-1.f / (eye - center).norm());
+    light_dir.normalize();
+
     TGAImage image(width, height, TGAImage::RGB);
+    TGAImage zbuffer(width, height, TGAImage::GRAYSCALE);
 
-    //设置深度缓冲区大小
-    float* zbuffer = new float[width * height];
-    for (int i = 0; i < width * height; i++) {
-        zbuffer[i] = std::numeric_limits<int>::min();
-    }
-
-    {
-        Matrix Projection = Matrix::identity(4);
-        Matrix ViewPort = viewport(width/8, height/8, width*3/4, height*3/4);
-        //这里的投影平面设置为z=0的平面，可推导出该位置的值
-        Projection[3][2] = -1.f / eye.norm();
-
-        //遍历每个面
-        for (int i = 0; i < model->nfaces(); i++) {
-
-            std::vector<int> face = model->face(i);
-            Vec3i screen_coords[3];
-            Vec3f world_coords[3];
-            Vec3f normals[3];
-            //遍历每个面的顶点
-            for (int j = 0; j < 3; j++) {
-                Vec3f v = model->vert(face[j]);
-                //先转换为齐次坐标，然后进行（模型）（视图）投影矩阵的转换，然后再进行齐次除法得到NDC坐标，然后进行视口变换
-                screen_coords[j] = threePos(ViewPort * m2v(Projection * ModelView(eye, center, Vec3f(0, 1, 0)) * v2m(v)));
-                world_coords[j] = v;
-                normals[j] = model->norm(i, j);
-            }
-            //通过对三角形两条边进行叉乘，得到法线向量
-            Vec3f n = (world_coords[2] - world_coords[0]) ^ (world_coords[1] - world_coords[0]);
-            n.normalize();
-
-            //光线与法线点乘
-            float intensity = n * light_dir;
-            if (intensity > 0)
-            {
-                Vec2i uv[3];
-                for (int k = 0; k < 3; k++) {
-                    uv[k] = model->uv(i, k);
-                }
-                triangle2(screen_coords[0], screen_coords[1], screen_coords[2], uv[0], uv[1], uv[2], intensity, zbuffer, image);
-            }
-                
-            
+    GouraudShader shader;
+    for (int i = 0; i < model->nfaces(); i++) {
+        Vec2f index[3];
+        for (int j = 0; j < 3; j++) {
+            index[j]=Vec2f(i,j);
         }
-
-        image.flip_vertically(); // i want to have the origin at the left bottom corner of the image
-        image.write_tga_file("output.tga");
+        triangle2(index, shader, zbuffer, image);
     }
+
+    image.flip_vertically(); // to place the origin in the bottom left corner of the image
+    zbuffer.flip_vertically();
+    image.write_tga_file("output.tga");
+    zbuffer.write_tga_file("zbuffer.tga");
 
     delete model;
     return 0;
